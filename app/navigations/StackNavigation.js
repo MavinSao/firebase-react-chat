@@ -63,8 +63,14 @@ const MainStack = () => {
                 ),
               })}
             />
-            <Stack.Screen name="Chat" component={ChatScreen}/>
-            <Stack.Screen name="CreateRoom" component={CreateRoom}/>
+        <Stack.Screen
+          name="ChatScreen"
+          component={ChatScreen}
+          options={({ route }) => ({
+            title: route.params.thread.name
+          })}
+        />
+        <Stack.Screen name="CreateRoom" component={CreateRoom} />
         </Stack.Navigator>
     )
 }
@@ -73,7 +79,6 @@ const StackNavigation = () => {
 
     let { auth } = useContext(AuthContext)
 
-    console.log("auth",auth);
     return (
         <NavigationContainer>
             {auth.isAuth ? <MainStack/> : <AuthStack/> }

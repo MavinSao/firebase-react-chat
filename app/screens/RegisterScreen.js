@@ -26,8 +26,6 @@ const RegisterScreen = ({ navigation }) => {
                 email,
                 username,
             })
-
-
             alert('User account created & signed in!')
             navigation.pop()
         })
